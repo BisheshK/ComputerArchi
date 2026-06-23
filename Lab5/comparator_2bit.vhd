@@ -4,8 +4,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity COMPARATOR_2BIT is
     port (
-        A  : in  std_logic_vector(1 downto 0);
-        B  : in  std_logic_vector(1 downto 0);
+        A  : in std_logic_vector (1 downto 0);
+        B  : in std_logic_vector (1 downto 0);
         EQ : out std_logic; -- A = B
         GT : out std_logic; -- A > B
         LT : out std_logic  -- A < B
@@ -14,8 +14,9 @@ end entity COMPARATOR_2BIT;
 
 architecture Behavioral of COMPARATOR_2BIT is
 begin
-    process(A, B)
+    process (A, B)
     begin
+        -- Cast std_logic_vector to unsigned for arithmetic comparison
         if unsigned(A) = unsigned(B) then
             EQ <= '1'; GT <= '0'; LT <= '0';
         elsif unsigned(A) > unsigned(B) then
